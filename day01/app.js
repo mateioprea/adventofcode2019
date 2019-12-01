@@ -24,9 +24,12 @@ let getRequiredFuel = (fuel) => {
  *
  * @type {number}
  */
-let sum = input.map(x => parseInt(x)).filter(x => !isNaN(x)).reduce((acc, currentValue) => {
-    let val = getRequiredFuel(currentValue);
-    acc += val;
-    return acc;
-}, 0);
+let sum = input
+    .map(x => parseInt(x))
+    .filter(x => !isNaN(x))
+    .reduce((acc, currentValue) => {
+        let val = getRequiredFuel(currentValue);
+        acc += val;
+        return acc;
+    }, 0);
 console.log(sum);
