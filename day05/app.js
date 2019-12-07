@@ -20,8 +20,8 @@ function getOperation(input) {
     }
 }
 
-function getData(inVar) {
-    let input = inData.slice(0);
+function getData(inVar = [5], d = inData) {
+    let input = d.slice(0);
     let incrementValue = 4;
     for (let i = 0; i < input.length; i += incrementValue) {
         let parameter = interpretParameter(input[i]);
@@ -41,7 +41,8 @@ function getData(inVar) {
         }
 
         if (op.operation === 3) {
-            input[input[i + 1]] = inVar;
+            //console.log("XXX", inVar)
+            input[input[i + 1]] = inVar.reverse().pop();
             incrementValue = op.increment;
         }
 
@@ -90,10 +91,14 @@ function getData(inVar) {
             }
             incrementValue = 4;
         }
-        if(op.operation === 99){break;}
+        if(op.operation === 99){
+            return input[input[i-1]]
+        }
     }
-    return inVar;
+    //return inVar;
 }
 
-console.log("Part 1 Data", getData(5));
+//console.log("Part 1 Data", getData(5));
+
+module.exports = getData;
 
